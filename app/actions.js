@@ -1,17 +1,13 @@
-const CIRCLE_CLASS = 'circle';
-const X_CLASS = 'x';
+import storage from "./storage/player-storage.js";
+import constants from "./core/constants.js";
+import elements from "./core/elements.js";
+import checkWinning from "./check-winning.js";
+const CIRCLE_CLASS = constants.CIRCLE_CLASS;
+const X_CLASS = constants.X_CLASS;
+const cellElements = elements.cellElements;
+
 let isCircleTurn = false;
 let countMovement = 0;
-const winningCombinations = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
 const finishGame = () => {
     for (let i = 0; i < cellElements.length; i++) {
         cellElements[i].classList.remove('x');
@@ -25,11 +21,11 @@ const placeMovement = (cell) => {
     cell.classList.add(currentClass);
     isCircleTurn = !isCircleTurn;
     if (countMovement <= 1) {
-        setPlayerSide(currentClass, countMovement);
+        storage.setPlayerSide(currentClass, countMovement);
     }
-    const endGame = checkWin(currentClass);
+    const endGame = checkWinning.checkWin(currentClass);
     if (endGame) {
-        announceWinner(currentClass);
+        checkWinning.announceWinner(currentClass);
         finishGame();
     }
 }
@@ -40,3 +36,8 @@ const movement = (e, index) => {
     countMovement++;
 
 }
+const actions = {
+    movement,
+    finishGame
+}
+export default actions;

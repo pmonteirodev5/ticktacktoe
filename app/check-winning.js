@@ -1,22 +1,28 @@
-const PLAYER_1_MOVEMENT = 'PLAYER_1_MOVEMENT';
-const PLAYER_2_MOVEMENT = 'PLAYER_2_MOVEMENT';
+import storage  from "./storage/player-storage.js";
+import constants from "./core/constants.js";
+import elements from "./core/elements.js";
 const checkWin = (currentClass) => {
     return isWinning(currentClass);
 }
 const isWinning = (currentClass) => {
-    const whoWon = winningCombinations.some(combination => {
+    const whoWon = constants.winningCombinations.some(combination => {
         return combination.every(index => {
-            return cellElements[index].classList.contains(currentClass);
+            return elements.cellElements[index].classList.contains(currentClass);
         })
     });
     return whoWon;
 }
 
 const announceWinner = (currentClass) => {
-    const winner = getPlayerSide(currentClass);
-    if(winner === PLAYER_1_MOVEMENT) {
-        addPointToPlayerOne();
+    const winner = storage.getPlayerSide(currentClass);
+    if(winner === constants.PLAYER_1_MOVEMENT) {
+        storage.addPointToPlayerOne();
     } else {
-        addPointToPlayerTwo();
+        storage.addPointToPlayerTwo();
     }
 }
+const checkWinning = {
+    checkWin,
+    announceWinner
+}
+export default checkWinning;
