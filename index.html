@@ -1,45 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>EM PROGRESSO - Jogo da Velha</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./style.css"/>
+    <title>Jogo da Velha</title>
 
     <script type="module" src="index.js"></script>
 </head>
 <body>
-<div class="container">
-<div class="board" data-board>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-</div>
 
-    <div id="score">
-        <div id="player1">
-            <h2 id="player1header">Player 1</h2>
-            <p id="player1Score"></p>
-        </div>
-        <div id="player2">
-            <h2 id="player2header">Player 2</h2>
-            <p id="player2Score"></p>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Jogo da Velha</a>
+
+    </div>
+    <div class="container-fluid">
+        <p id="turn"></p>
+
+    </div>
+    <div class="container-fluid">
+        <div id="score">
+            <span id="player1">Player 1: <strong id="player1Score"></strong></span>
+            <span id="player2">Player 2: <strong id="player2Score"></strong></span>
         </div>
     </div>
+
+</nav>
+<div class="game-container">
+    <div class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+    </div>
+
+
+    <div id="winner">
+        <h2 id="winnerHeader">Vencedor</h2>
+        <p id="winnerName"></p>
+    </div>
 </div>
+
 <div class="winning-message" data-winning-message>
     <p class="winning-message-text" data-winning-message-text></p>
     <button class="winning-message-button" data-restart-button>
         Reiniciar!
     </button>
 </div>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,22 @@
+{
+  "name": "ticktacktoe",
+  "version": "0.1.0",
+  "description": "Ticktacktoe game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmonteirodev5/ticktacktoe.git"
+  },
+  "author": "paulo@pmonteirodev.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pmonteirodev5/ticktacktoe/issues"
+  },
+  "homepage": "https://github.com/pmonteirodev5/ticktacktoe#readme",
+  "devDependencies": {
+    "bootstrap": "^5.2.1"
+  }
+}

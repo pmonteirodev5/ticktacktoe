@@ -15,12 +15,13 @@ const isWinning = (currentClass) => {
 
 const announceWinner = (currentClass) => {
     const winner = storage.getPlayerSide(currentClass);
-    console.log(winner);
     if(winner === constants.PLAYER_1_MOVEMENT) {
         storage.addPointToPlayerOne();
     } else {
         storage.addPointToPlayerTwo();
     }
+    document.querySelector('#winnerName').style.font = 'bold 40px';
+    document.querySelector('#winnerName').innerHTML = winner === constants.PLAYER_1_MOVEMENT ? 'Player 1' : 'Player 2';
 }
 const checkWinning = {
     checkWin,

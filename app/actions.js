@@ -16,6 +16,7 @@ const finishGame = () => {
         cellElements[i].removeEventListener('click', movement);
     }
     setTimeout(() => {
+        document.querySelector('#winnerName').innerHTML = '';
         startGame();
     }, 1000);
 }
@@ -37,7 +38,15 @@ const movement = (e, index) => {
     const cell = e.target;
     placeMovement(cell, index);
 
-    countMovement++;
+
+    countMovement += 1;
+    if(countMovement % 2 === 0) {
+        document.querySelector('#turn').innerHTML = 'Vez de: Player 1';
+        document.querySelector('#player1header').style.font = 'bold 40px';
+    } else {
+        document.querySelector('#turn').innerHTML = 'Vez de: Player 2';
+        document.querySelector('#player2header').style.font = 'bold 40px';
+    }
 
 }
 const actions = {
