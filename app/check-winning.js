@@ -15,6 +15,7 @@ const isWinning = (currentClass) => {
 
 const announceWinner = (currentClass) => {
     const winner = storage.getPlayerSide(currentClass);
+    console.log(winner);
     if(winner === constants.PLAYER_1_MOVEMENT) {
         storage.addPointToPlayerOne();
     } else {

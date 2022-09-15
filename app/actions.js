@@ -2,6 +2,7 @@ import storage from "./storage/player-storage.js";
 import constants from "./core/constants.js";
 import elements from "./core/elements.js";
 import checkWinning from "./check-winning.js";
+import {startGame} from "../index.js";
 const CIRCLE_CLASS = constants.CIRCLE_CLASS;
 const X_CLASS = constants.X_CLASS;
 const cellElements = elements.cellElements;
@@ -14,6 +15,9 @@ const finishGame = () => {
         cellElements[i].classList.remove('circle');
         cellElements[i].removeEventListener('click', movement);
     }
+    setTimeout(() => {
+        startGame();
+    }, 1000);
 }
 const placeMovement = (cell) => {
     const currentClass = isCircleTurn ? CIRCLE_CLASS : X_CLASS;

@@ -14,6 +14,10 @@ const addPointToPlayerOne = () => {
         score: playerOneScore
     })
 }
+const setPlayerOneScore = (score) => {
+    playerOneScore = score;
+    playerOneScoreElement.innerText = playerOneScore;
+}
 const addPointToPlayerTwo = () => {
     playerTwoScore += 1;
     playerTwoScoreElement.innerText = playerTwoScore;
@@ -21,6 +25,10 @@ const addPointToPlayerTwo = () => {
         player: 'PLAYER_2_MOVEMENT',
         score: playerTwoScore
     })
+}
+const setPlayerTwoScore = (score) => {
+    playerTwoScore = score;
+    playerTwoScoreElement.innerText = playerTwoScore;
 }
 const initStorage = () => {
     const playerSide = window.sessionStorage.getItem('playerSide');
@@ -44,7 +52,7 @@ const getScore = () => {
         return JSON.parse(score);
     }
 }
-const getPlayerSide = ({player, side}) => {
+const getPlayerSide = (side) => {
     const playerSide = window.sessionStorage.getItem('playerSide');
     if (playerSide) {
         const playerSides = JSON.parse(playerSide);
@@ -58,7 +66,7 @@ const getPlayerSide = ({player, side}) => {
 }
 const setPlayerSide = (movement, gameMovement) => {
     const movements = getMovements();
-    if (movements) {
+    if (movements && movements.length < 2) {
         if (gameMovement === 0) {
             movements.push({
                 type: 'PLAYER_1_MOVEMENT',
@@ -70,23 +78,20 @@ const setPlayerSide = (movement, gameMovement) => {
                 movement
             });
         }
-        window.sessionStorage.setItem('playerSide', JSON.stringify(movements));
     }
+
+    window.sessionStorage.setItem('playerSide', JSON.stringify(movements));
 }
 const setScore = ({player, score}) => {
     const totalScore = getScore();
     if (totalScore) {
-        const playerScore = totalScore.find(score => score.player === player);
-        if (playerScore) {
-            playerScore.score = score;
-        } else {
-            totalScore.push({
-                player,
-                score
-            })
-        }
-        window.sessionStorage.setItem('score', JSON.stringify(totalScore));
+        totalScore.push({
+            player,
+            score
+        })
     }
+    window.sessionStorage.setItem('score', JSON.stringify(totalScore));
+
 }
 const playerStorage = {
     initStorage,
@@ -96,6 +101,8 @@ const playerStorage = {
     getScore,
     addPointToPlayerOne,
     addPointToPlayerTwo,
-    setScore
+    setScore,
+    setPlayerOneScore,
+    setPlayerTwoScore,
 }
 export default playerStorage;
